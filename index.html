@@ -13,12 +13,13 @@
         }
 
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #2c3e50;
-            --bg-light: #ecf0f1;
+            --primary-color: #6B46C1;   /* Morado principal */
+            --secondary-color: #9333EA; /* Morado más claro */
+            --accent-color: #F59E0B;    /* Amarillo dorado para contraste */
+            --text-color: #1F2937;
+            --bg-light: #F9FAFB;
             --white: #ffffff;
+            --code-bg: #1E1E2E;
         }
 
         body {
@@ -28,13 +29,13 @@
             scroll-behavior: smooth;
         }
 
-        /* Header & Navigation */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--primary-color);
-            padding: 1rem 0;
+            background: var(--white);
+            padding: 0.8rem 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -49,7 +50,7 @@
         }
 
         .logo {
-            color: var(--white);
+            color: var(--primary-color);
             font-size: 1.5rem;
             font-weight: bold;
         }
@@ -61,56 +62,94 @@
         }
 
         .nav-links a {
-            color: var(--white);
+            color: var(--text-color);
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         .mobile-menu {
             display: none;
-            color: var(--white);
+            color: var(--primary-color);
             font-size: 1.5rem;
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section - LIMPIO Y PROFESIONAL */
         .hero {
             margin-top: 60px;
-            min-height: 100vh;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: var(--white); /* Fondo blanco limpio */
+            color: var(--text-color); /* Texto oscuro */
+            padding: 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .hero-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            min-height: 90vh;
+            align-items: center;
+        }
+
+        .hero-image {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            text-align: center;
             padding: 2rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 3rem;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
+            font-weight: 800;
+            color: var(--primary-color);
         }
 
         .hero-content .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            color: var(--secondary-color);
         }
 
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            max-width: 700px;
+            line-height: 1.7;
+            opacity: 0.9;
         }
 
         .cta-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -119,17 +158,26 @@
             color: var(--white);
             text-decoration: none;
             border-radius: 5px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #D97706;
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--white);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
         }
 
         /* Sections */
@@ -160,11 +208,6 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--secondary-color);
-        }
-
-        .about-text h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
         }
 
         /* Experience Timeline */
@@ -345,12 +388,19 @@
                 display: block;
             }
 
+            .hero-container {
+                flex-direction: column;
+            }
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .about-content,
-            .contact-content {
+            .hero-content .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
@@ -361,16 +411,20 @@
 
             .cta-buttons {
                 flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">Portafolio</div>
+            <div class="logo">Margaritta Code</div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#acerca">Acerca</a></li>
@@ -385,15 +439,20 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section con imagen profesional -->
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Ingeniera Informática</h1>
-            <p class="subtitle">Backend Developer & Database Specialist</p>
-            <p>Graduada de CUJAE | 3+ años de experiencia en desarrollo de software y arquitectura de datos</p>
-            <div class="cta-buttons">
-                <a href="#contacto" class="btn">Contáctame</a>
-                <a href="#experiencia" class="btn btn-outline">Ver Experiencia</a>
+        <div class="hero-container">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop" alt="Profesional trabajando en tecnología">
+            </div>
+            <div class="hero-content">
+                <h1>Ingeniera Informática</h1>
+                <p class="subtitle">Backend Developer & Database Specialist</p>
+                <p>Graduada de CUJAE | 3+ años de experiencia en desarrollo de software y arquitectura de datos | Especialista en WordPress y soluciones de contabilidad en la nube para Latinoamérica</p>
+                <div class="cta-buttons">
+                    <a href="#contacto" class="btn">Contáctame</a>
+                    <a href="#experiencia" class="btn btn-outline">Ver Experiencia</a>
+                </div>
             </div>
         </div>
     </section>
@@ -407,7 +466,7 @@
                 <h3>Ingeniera en Ciencias Informáticas</h3>
                 <p><strong>Universidad Tecnológica de La Habana "José Antonio Echeverría" (CUJAE)</strong></p>
                 <br>
-                <p>Ingeniera Informática con 3+ años de experiencia en desarrollo de software y arquitectura de datos. Especializada en desarrollo backend con PHP, Java y Python, combinando rigor técnico con enfoque en resultados de negocio.</p>
+                <p>Ingeniera Informática con 3+ años de experiencia en desarrollo de software y arquitectura de datos. Especializada en desarrollo backend con PHP, Java y Python, combinando rigor técnico con enfoque en resultados de negocio. Experiencia avanzada en WordPress para desarrollo de sitios corporativos y customización de plugins.</p>
                 <br>
                 <p>Experiencia completa en ciclo de vida de bases de datos desde el modelado conceptual hasta la implementación en producción. Actualmente desarrollando soluciones de contabilidad en la nube para el mercado latinoamericano.</p>
             </div>
@@ -419,25 +478,27 @@
         <h2 class="section-title">Experiencia Profesional</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <h3>Desarrolladora Backend</h3>
+                <h3>Desarrolladora Backend & WordPress</h3>
                 <div class="company">Liangware</div>
                 <div class="date">2023 - Actual</div>
                 <p>Desarrollo de LiangApp, sistema de contabilidad en la nube, utilizando PHP/Java/Python para gestión de facturación electrónica y reportes financieros en tiempo real.</p>
                 <ul>
                     <li>Diseño e implementación de base de datos relacional para módulos de contabilidad, cumpliendo normativas fiscales y optimizando consultas complejas de +1M registros</li>
                     <li>Integración de APIs bancarias y servicios de pagos digitales, automatizando conciliaciones y reduciendo errores manuales en 85%</li>
+                    <li>Desarrollo de sitio corporativo en WordPress con tema customizado y plugins para gestión de clientes</li>
                     <li>Colaboración en equipo ágil (SCRUM) para producto SaaS usado por 500+ contadores en Latinoamérica</li>
                 </ul>
             </div>
 
             <div class="timeline-item">
-                <h3>Administradora de Redes</h3>
+                <h3>Administradora de Redes & WordPress</h3>
                 <div class="company">DISAIC</div>
                 <div class="date">2020 - 2023</div>
                 <p>Administración y mantenimiento de servidores Linux/Windows, garantizando 99.9% uptime para infraestructura crítica de clientes corporativos.</p>
                 <ul>
                     <li>Implementación de políticas de seguridad, backups automatizados y monitorización con Nagios/Zabbix, reduciendo incidentes en 60%</li>
                     <li>Virtualización con VMware/Docker, optimizando recursos y reduciendo costos operacionales en 30%</li>
+                    <li>Desarrollo y mantenimiento de 10+ sitios web corporativos en WordPress, incluyendo customización de temas y plugins</li>
                     <li>Soporte técnico a 100+ usuarios finales, resolviendo tickets de red, VPN y servicios cloud</li>
                 </ul>
             </div>
@@ -469,22 +530,22 @@
             </div>
 
             <div class="skill-category">
-                <h3><i class="fas fa-server"></i> Backend & DevOps</h3>
+                <h3><i class="fas fa-server"></i> Backend & CMS</h3>
                 <ul class="skill-list">
                     <li><i class="fas fa-check-circle"></i> Laravel, Symfony</li>
                     <li><i class="fas fa-check-circle"></i> Spring Boot, Django</li>
-                    <li><i class="fas fa-check-circle"></i> Docker, Git, API REST</li>
-                    <li><i class="fas fa-check-circle"></i> Linux Server Admin</li>
+                    <li><i class="fas fa-check-circle"></i> WordPress/WooCommerce</li>
+                    <li><i class="fas fa-check-circle"></i> API REST, GraphQL</li>
                 </ul>
             </div>
 
             <div class="skill-category">
-                <h3><i class="fas fa-cogs"></i> Metodologías</h3>
+                <h3><i class="fas fa-cogs"></i> DevOps & Herramientas</h3>
                 <ul class="skill-list">
+                    <li><i class="fas fa-check-circle"></i> Docker, Git, CI/CD</li>
+                    <li><i class="fas fa-check-circle"></i> Linux Server Admin</li>
                     <li><i class="fas fa-check-circle"></i> Scrum/Agile</li>
-                    <li><i class="fas fa-check-circle"></i> Patrones de Diseño</li>
-                    <li><i class="fas fa-check-circle"></i> POO, SOLID</li>
-                    <li><i class="fas fa-check-circle"></i> TDD, CI/CD</li>
+                    <li><i class="fas fa-check-circle"></i> POO, SOLID, Patrones</li>
                 </ul>
             </div>
         </div>
@@ -506,6 +567,21 @@
                         <span class="tech-tag">Vue.js</span>
                     </div>
                     <p><strong>Impacto:</strong> 500+ contadores activos | +1M transacciones procesadas</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Plataforma Corporativa WordPress</h3>
+                    <p>Desarrollo completo de sitio corporativo multisitio para cliente del sector salud, con customización avanzada de tema, plugins y integración con sistemas de citas médicas.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">WordPress</span>
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">WooCommerce</span>
+                        <span class="tech-tag">Elementor</span>
+                    </div>
+                    <p><strong>Impacto:</strong> 50+ usuarios administrativos | 10K visitas mensuales</p>
                 </div>
             </div>
 
@@ -607,8 +683,9 @@
             navLinks.style.left = '0';
             navLinks.style.right = '0';
             navLinks.style.flexDirection = 'column';
-            navLinks.style.background = 'var(--primary-color)';
+            navLinks.style.background = 'var(--white)';
             navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
         });
 
         // Smooth scroll for navigation links
