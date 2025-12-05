@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingeniera Informática | Portafolio Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --bg-light: #ecf0f1;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--primary-color);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--secondary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            width: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-img {
+                margin: 0 auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Portafolio</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#acerca">Acerca</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Ingeniera Informática</h1>
+            <p class="subtitle">Backend Developer & Database Specialist</p>
+            <p>Graduada de CUJAE | 3+ años de experiencia en desarrollo de software y arquitectura de datos</p>
+            <div class="cta-buttons">
+                <a href="#contacto" class="btn">Contáctame</a>
+                <a href="#experiencia" class="btn btn-outline">Ver Experiencia</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="acerca">
+        <h2 class="section-title">Acerca de Mí</h2>
+        <div class="about-content">
+            <img src="https://via.placeholder.com/250" alt="Foto de perfil" class="profile-img">
+            <div class="about-text">
+                <h3>Ingeniera en Ciencias Informáticas</h3>
+                <p><strong>Universidad Tecnológica de La Habana "José Antonio Echeverría" (CUJAE)</strong></p>
+                <br>
+                <p>Ingeniera Informática con 3+ años de experiencia en desarrollo de software y arquitectura de datos. Especializada en desarrollo backend con PHP, Java y Python, combinando rigor técnico con enfoque en resultados de negocio.</p>
+                <br>
+                <p>Experiencia completa en ciclo de vida de bases de datos desde el modelado conceptual hasta la implementación en producción. Actualmente desarrollando soluciones de contabilidad en la nube para el mercado latinoamericano.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experiencia" style="background: var(--bg-light);">
+        <h2 class="section-title">Experiencia Profesional</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Desarrolladora Backend</h3>
+                <div class="company">Liangware</div>
+                <div class="date">2023 - Actual</div>
+                <p>Desarrollo de LiangApp, sistema de contabilidad en la nube, utilizando PHP/Java/Python para gestión de facturación electrónica y reportes financieros en tiempo real.</p>
+                <ul>
+                    <li>Diseño e implementación de base de datos relacional para módulos de contabilidad, cumpliendo normativas fiscales y optimizando consultas complejas de +1M registros</li>
+                    <li>Integración de APIs bancarias y servicios de pagos digitales, automatizando conciliaciones y reduciendo errores manuales en 85%</li>
+                    <li>Colaboración en equipo ágil (SCRUM) para producto SaaS usado por 500+ contadores en Latinoamérica</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Administradora de Redes</h3>
+                <div class="company">DISAIC</div>
+                <div class="date">2020 - 2023</div>
+                <p>Administración y mantenimiento de servidores Linux/Windows, garantizando 99.9% uptime para infraestructura crítica de clientes corporativos.</p>
+                <ul>
+                    <li>Implementación de políticas de seguridad, backups automatizados y monitorización con Nagios/Zabbix, reduciendo incidentes en 60%</li>
+                    <li>Virtualización con VMware/Docker, optimizando recursos y reduciendo costos operacionales en 30%</li>
+                    <li>Soporte técnico a 100+ usuarios finales, resolviendo tickets de red, VPN y servicios cloud</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="habilidades">
+        <h2 class="section-title">Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Programación</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check-circle"></i> PHP (Avanzado)</li>
+                    <li><i class="fas fa-check-circle"></i> Java (Avanzado)</li>
+                    <li><i class="fas fa-check-circle"></i> Python (Avanzado)</li>
+                    <li><i class="fas fa-check-circle"></i> JavaScript/TypeScript</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-database"></i> Bases de Datos</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check-circle"></i> MySQL, PostgreSQL</li>
+                    <li><i class="fas fa-check-circle"></i> SQL Server, MongoDB</li>
+                    <li><i class="fas fa-check-circle"></i> Diseño y Normalización</li>
+                    <li><i class="fas fa-check-circle"></i> Optimización de Consultas</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-server"></i> Backend & DevOps</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check-circle"></i> Laravel, Symfony</li>
+                    <li><i class="fas fa-check-circle"></i> Spring Boot, Django</li>
+                    <li><i class="fas fa-check-circle"></i> Docker, Git, API REST</li>
+                    <li><i class="fas fa-check-circle"></i> Linux Server Admin</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3><i class="fas fa-cogs"></i> Metodologías</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-check-circle"></i> Scrum/Agile</li>
+                    <li><i class="fas fa-check-circle"></i> Patrones de Diseño</li>
+                    <li><i class="fas fa-check-circle"></i> POO, SOLID</li>
+                    <li><i class="fas fa-check-circle"></i> TDD, CI/CD</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" style="background: var(--bg-light);">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>LiangApp - Sistema de Contabilidad en la Nube</h3>
+                    <p>Sistema SaaS para gestión contable y financiera enfocado en el mercado latinoamericano. Permite facturación electrónica, reportes fiscales y conciliaciones bancarias automatizadas.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Laravel</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">API REST</span>
+                        <span class="tech-tag">Vue.js</span>
+                    </div>
+                    <p><strong>Impacto:</strong> 500+ contadores activos | +1M transacciones procesadas</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Plataforma de Análisis de Datos</h3>
+                    <p>Solución ETL para procesamiento de grandes volúmenes de datos financieros, generando reportes automatizados con visualización en tiempo real.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                    <p><strong>Impacto:</strong> Reducción de tiempo de reportes de 8h a 20min</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Infraestructura Cloud Segura</h3>
+                    <p>Diseño e implementación de arquitectura de servidores virtualizados para cliente del sector salud, cumpliendo estándares de seguridad y alta disponibilidad.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Nagios</span>
+                    </div>
+                    <p><strong>Impacto:</strong> 99.9% uptime | 60% reducción de incidentes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="educacion">
+        <h2 class="section-title">Educación</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Ingeniera en Ciencias Informáticas</h3>
+                <div class="company">Universidad Tecnológica de La Habana "José Antonio Echeverría" (CUJAE)</div>
+                <div class="date">2015 - 2020</div>
+                <p>Proyecto de tesis: Sistema de Gestión Inteligente con arquitectura microservicios para optimización de procesos empresariales.</p>
+                <p><strong>Cursos destacados:</strong> Arquitectura de Software, Bases de Datos Avanzadas, Redes y Seguridad, Desarrollo de Aplicaciones Web</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" style="background: var(--bg-light);">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>tu.email@ejemplo.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+53 5xxxxxxx</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Ciudad, País</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/tuperfil</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/tuusuario</span>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Tu nombre" style="width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px;">
+                    <input type="email" placeholder="Tu email" style="width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px;">
+                    <textarea placeholder="Tu mensaje" rows="5" style="width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+                    <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ingeniera Informática. Diseñado con <i class="fas fa-heart" style="color: var(--accent-color);"></i> por profesionales CUJAE</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = 'var(--primary-color)';
+            navLinks.style.padding = '1rem';
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
